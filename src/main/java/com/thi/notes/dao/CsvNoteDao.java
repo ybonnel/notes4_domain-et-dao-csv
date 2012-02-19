@@ -1,10 +1,11 @@
 package com.thi.notes.dao;
 
-import static com.thi.notes.dao.CsvFileHelper.readCsvFile;
+import static com.thi.notes.dao.CsvFileHelper.*;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
+import com.thi.notes.domain.NoteEleve;
 
 public class CsvNoteDao implements NoteDao {
 
@@ -13,30 +14,29 @@ public class CsvNoteDao implements NoteDao {
 	private final static String ELEVES_FILE_NAME = "notes-dernier-exam.csv";
 
 	@Override
-	public Map<String, Double> findNotesDernierExam() {
+	public List<NoteEleve> findNotesDernierExam() {
 
 		final List<String[]> data = readCsvFile(RESOURCES_PATH + ELEVES_FILE_NAME, SEPARATOR);
 
-		final Map<String, Double> map = dataToMap(data);
-
-		return map;
+		return dataToMap(data);
 	}
 
-	private Map<String, Double> dataToMap(List<String[]> data) {
-		final Map<String, Double> map = new HashMap<String, Double>();
+	private List<NoteEleve> dataToMap(List<String[]> data) {
+		final List<NoteEleve> notes = new ArrayList<NoteEleve>();
 
 		for (String[] oneData : data) {
 
-			final String nom = oneData[0];
-			final String prenom = oneData[1];
+			NoteEleve note = new NoteEleve();
 
+			note.setNomEleve(oneData[0]);
+			note.setPrenomEleve(oneData[1]);
 			final String noteStr = oneData[2];
-			final Double note = new Double(noteStr.replace(",", "."));
+			note.setNote(new Double(noteStr.replace(",", ".")));
 
-			map.put(nom + " " + prenom, note);
+			notes.add(note);
 		}
 
-		return map;
+		return notes;
 	}
 
 }

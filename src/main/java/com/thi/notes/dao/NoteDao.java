@@ -1,8 +1,10 @@
 package com.thi.notes.dao;
 
-import java.util.Map;
+import java.util.List;
+
+import com.thi.notes.domain.NoteEleve;
 
 public interface NoteDao {
 	
-	 Map<String, Double> findNotesDernierExam();
+	List<NoteEleve> findNotesDernierExam();
 }

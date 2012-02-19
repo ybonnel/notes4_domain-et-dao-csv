@@ -1,13 +1,13 @@
 package com.thi.notes;
 
 import java.util.List;
-import java.util.Map;
 
 import com.thi.notes.dao.CsvEleveDao;
 import com.thi.notes.dao.CsvNoteDao;
 import com.thi.notes.dao.EleveDao;
 import com.thi.notes.dao.NoteDao;
 import com.thi.notes.domain.Eleve;
+import com.thi.notes.domain.NoteEleve;
 
 public class DaoLauncher {
 
@@ -22,11 +22,10 @@ public class DaoLauncher {
 		}
 
 		final NoteDao noteDao = new CsvNoteDao();
-		final Map<String, Double> notes = noteDao.findNotesDernierExam();
+		final List<NoteEleve> notes = noteDao.findNotesDernierExam();
 		System.out.println("Notes des eleves");
-		for (String key : notes.keySet()) {
-			final Double note = notes.get(key);
-			System.out.println(key + " : " + note);
+		for (NoteEleve note : notes) {
+			System.out.println(note.getNomEleve() + " " + note.getPrenomEleve() + " : " + note.getNote());
 		}
 	}
 

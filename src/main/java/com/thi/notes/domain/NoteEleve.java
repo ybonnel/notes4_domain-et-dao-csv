@@ -2,22 +2,26 @@ package com.thi.notes.domain;
 
 public class NoteEleve {
 
-	private Eleve eleve;
+	private String nomEleve;
+
+	private String prenomEleve;
 
 	private Double note;
 
-	public NoteEleve(Eleve eleve, Double note) {
-		super();
-		this.eleve = eleve;
-		this.note = note;
+	public String getNomEleve() {
+		return nomEleve;
 	}
 
-	public Eleve getEleve() {
-		return eleve;
+	public void setNomEleve(String nomEleve) {
+		this.nomEleve = nomEleve;
 	}
 
-	public void setEleve(Eleve eleve) {
-		this.eleve = eleve;
+	public String getPrenomEleve() {
+		return prenomEleve;
+	}
+
+	public void setPrenomEleve(String prenomEleve) {
+		this.prenomEleve = prenomEleve;
 	}
 
 	public Double getNote() {
