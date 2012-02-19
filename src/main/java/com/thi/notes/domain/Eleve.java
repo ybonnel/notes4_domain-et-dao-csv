@@ -2,15 +2,32 @@ package com.thi.notes.domain;
 
 import java.util.Date;
 
+import com.thi.notes.dao.CsvEleveDao.AdapterDate;
+import com.thi.notes.domain.Sexe.AdapterSexe;
 
+import fr.ybo.moteurcsv.adapter.AdapterInteger;
+import fr.ybo.moteurcsv.annotation.BaliseCsv;
+import fr.ybo.moteurcsv.annotation.FichierCsv;
+
+@FichierCsv(separateur = ";")
 public class Eleve {
 
+	@BaliseCsv("Nom")
 	private String nom;
+	@BaliseCsv("Prénom")
 	private String prenom;
+	@BaliseCsv(value = "Classe", adapter = AdapterInteger.class)
 	private Integer annee;
+	@BaliseCsv(value = "Sexe", adapter = AdapterSexe.class)
 	private Sexe sexe;
+	@BaliseCsv(value = "Date de naissance", adapter = AdapterDate.class)
 	private Date dateNaissance;
+	@BaliseCsv(value = "Adresse")
 	private String adresse;
+
+	public Eleve() {
+		// Constructeur par défaut obligatoire pour MoteurCsv.
+	}
 
 	public Eleve(String nom, String prenom, Integer annee, Sexe sexe) {
 		super();
