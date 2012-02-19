@@ -28,13 +28,23 @@
 			<organization>ICAUDA</organization>
 		</developer>
 
+		<!-- Yan -->
+		<developer>
+			<id>ybonnel</id>
+			<name>Yan Bonnel</name>
+			<email>ybonnel@gmail.com</email>
+			<roles>
+				<role>Developper</role>
+			</roles>
+			<url>https://github.com/ybonnel</url>
+		</developer>
+
 	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.8.2</junit.version>
-		<jfreechart.version>1.0.14</jfreechart.version>
-		<opencsv.version>2.3</opencsv.version>
+		<moteurcsv.version>1.1.0</moteurcsv.version>
 	</properties>
 
 	<dependencyManagement>
@@ -47,18 +57,11 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- jfreechart -->
+			<!-- MoteurCSV -->
 			<dependency>
-				<groupId>org.jfree</groupId>
-				<artifactId>jfreechart</artifactId>
-				<version>${jfreechart.version}</version>
-			</dependency>
-
-			<!-- Open CSV -->
-			<dependency>
-				<groupId>net.sf.opencsv</groupId>
-				<artifactId>opencsv</artifactId>
-				<version>${opencsv.version}</version>
+				<groupId>fr.ybo</groupId>
+				<artifactId>moteurcsv</artifactId>
+				<version>${moteurcsv.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -71,17 +74,32 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- jfreechart -->
+		<!-- MoteurCSV -->
 		<dependency>
-			<groupId>org.jfree</groupId>
-			<artifactId>jfreechart</artifactId>
-		</dependency>
-
-		<!-- Open CSV -->
-		<dependency>
-			<groupId>net.sf.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
+			<groupId>fr.ybo</groupId>
+			<artifactId>moteurcsv</artifactId>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>ybonnel-release</id>
+			<url>https://repository-ybonnel.forge.cloudbees.com/release/</url>
+		</repository>
+	</repositories>
 
 </project>
