@@ -21,6 +21,7 @@ public class CsvFileHelper {
 			final CSVReader csvReader = new CSVReader(fr, separator);
 
 			String[] nextLine = null;
+			boolean first = true;
 			while ((nextLine = csvReader.readNext()) != null) {
 				final int size = nextLine.length;
 
@@ -34,7 +35,8 @@ public class CsvFileHelper {
 				}
 
 				// ligne de commentaire
-				if (debut.startsWith("#")) {
+				if (first) {
+					first = false;
 					continue;
 				}
 				data.add(nextLine);
